@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-<title>Insert title here</title>
+<title>updateAction</title>
 </head>
 <body>
 	<%
@@ -17,8 +17,9 @@
 	
 	PrintWriter writer = response.getWriter();
 	
-	String title = request.getParameter("title");
+	int id = Integer.parseInt(request.getParameter("id"));
 	String content = request.getParameter("content");
+	String title = request.getParameter("title");
 	
 	if (title == null || content == null) {
 		writer.println("<script>");
@@ -27,11 +28,11 @@
 		writer.println("</script>");
 	} else {
 		PostDAO dao = new PostDAO();
-		int result = dao.write(title, content);
+		int result = dao.update(id, title, content);
 		
 		if (result == -1) {
 			writer.println("<script>");
-			writer.println("alert('글쓰기에 실패했습니다.')");
+			writer.println("alert('글 수정에 실패했습니다.')");
 			writer.println("history.back()");
 			writer.println("</script>");
 		}
@@ -41,7 +42,6 @@
 			writer.println("</script>");
 		}
 	}
-	
 	%>
 </body>
 </html>

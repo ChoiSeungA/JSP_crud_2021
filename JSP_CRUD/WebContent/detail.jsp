@@ -62,7 +62,7 @@
 		    <label>내용</label>
 		    <textarea name="content" readonly><%= post.getContent() %></textarea>
 		  </div>
-		  <button class="ui primary button" onClick="location.href='./read.jsp'">
+		  <button class="ui primary button" onClick="history.back()">
 		    글목록
 		  </button>
 		</form>

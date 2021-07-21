@@ -40,6 +40,7 @@
 			    <th>제목</th>
 			    <th>작성일</th>
 			    <th></th>
+			    <th></th>
 		 	</tr>
 		  </thead>
 		  <tbody>
@@ -53,8 +54,8 @@
 		      <td data-label="NO"><%= i+1 %></td>
 		      <td data-label="title"><a href="./detail.jsp?id=<%= list.get(i).getId() %>"><%= list.get(i).getTitle() %></a></td>
 		      <td data-label="content"><%= list.get(i).getReg_date() %></td>
-		      <td><button class="ui button" onClick="location.href='./delete.jsp?id=<%= list.get(i).getId() %>'">삭제</button></td>
-		      <td><button class="ui button" onClick="location.href='./update.jsp?id=<%= list.get(i).getId() %>'">수정</button></td>
+		      <td><button class="ui button" onClick="deleteClick(<%= list.get(i).getId() %>)">삭제</button></td>
+		    	<td><button class="ui button" onClick="location.href='./update.jsp?id=<%= list.get(i).getId() %>'">수정</button></td>
 		    </tr>
 			<%   
 		   }
@@ -62,5 +63,13 @@
 		  </tbody>
 		</table>
 	</div>
+	<script>
+		function deleteClick(id) {
+			if(confirm("글을 삭제하시겠습니까?")) {
+				location.href = './delete.jsp?id='+id;
+			}
+		}
+	
+	</script>
 </body>
 </html>

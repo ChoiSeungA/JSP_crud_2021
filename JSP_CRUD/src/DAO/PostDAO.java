@@ -114,7 +114,6 @@ public class PostDAO {
 	public int update(int id, String title, String content) {
 		
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		String sql = "UPDATE post set title=?, content=? WHERE id=?";
 		
 		try {

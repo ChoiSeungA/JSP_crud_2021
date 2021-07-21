@@ -45,7 +45,7 @@
 		  </button>
 		  <button class="ui button" onClick="location.href='./read.jsp'">
 		    취소
-		  </button>r
+		  </button>
 		</form>
 	</div>
 </body>

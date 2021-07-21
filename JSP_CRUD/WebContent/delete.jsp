@@ -32,12 +32,12 @@
 		
 		<%	
 			int id = 0;
+			PrintWriter writer = response.getWriter();
 		
 			if (request.getParameter("id") != null)
 				id = Integer.parseInt(request.getParameter("id"));
 			
 			if (id == 0) {
-				PrintWriter writer = response.getWriter();
 				writer.println("<script>");
 				writer.println("alert('유효하지 않은 글입니다.')");
 				writer.println("location.href='read.jsp'");
@@ -45,6 +45,16 @@
 			}
 			
 			int result = new PostDAO().delete(id);
+			if(result == -1) {
+				writer.println("<script>");
+				writer.println("alert('글 삭제에 실패했습니다.')");
+				writer.println("'history.back()'");
+				writer.println("</script>");
+			} else {
+				writer.println("<script>");
+				writer.println("location.href='read.jsp'");
+				writer.println("</script>");	
+			}
 			
 		%>
 		
